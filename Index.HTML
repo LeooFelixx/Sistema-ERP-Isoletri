@@ -11,10 +11,8 @@
 <body>
 
   <!-- Modal de Cadastro de Usuário -->
-  <div id="modal-cadastro"
-    style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;">
-    <form id="form-cadastro"
-      style="background:#fff;padding:32px;border-radius:8px;box-shadow:0 2px 8px #0002;display:flex;flex-direction:column;gap:16px;min-width:300px;">
+  <div id="modal-cadastro" class="modal-cadastro">
+    <form id="form-cadastro" class="form-cadastro">
       <h2>Login</h2>
       <label>
         Usuário:
@@ -24,20 +22,16 @@
         Senha:
         <input type="password" id="senha" required />
       </label>
-      <div style="display:flex;gap:10px;">
-        <button type="submit"
-          style="background:#0095eb;color:#fff;border:none;padding:8px 0;border-radius:5px;cursor:pointer;flex:1;">Entrar</button>
-        <button type="button" id="btn-cadastrar"
-          style="background:#398bdd;color:#fff;border:none;padding:8px 0;border-radius:5px;cursor:pointer;flex:1;">Cadastre-se</button>
+      <div class="botoes-login">
+        <button type="submit" class="btn-entrar">Entrar</button>
+        <button type="button" id="btn-cadastrar" class="btn-cadastrar">Cadastre-se</button>
       </div>
     </form>
   </div>
 
   <!-- Modal para Novo Usuário -->
-  <div id="modal-novo-usuario"
-    style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:10000;">
-    <form id="form-novo-usuario"
-      style="background:#fff;padding:32px;border-radius:8px;box-shadow:0 2px 8px #0002;display:flex;flex-direction:column;gap:16px;min-width:300px;">
+  <div id="modal-novo-usuario" class="modal-novo-usuario">
+    <form id="form-novo-usuario" class="form-novo-usuario">
       <h2>Novo Usuário</h2>
       <label>
         Nome:
@@ -51,56 +45,65 @@
         Senha:
         <input type="password" id="nova-senha" required />
       </label>
-      <div style="display:flex;gap:10px;">
-        <button type="submit"
-          style="background:#0095eb;color:#fff;border:none;padding:8px 0;border-radius:5px;cursor:pointer;flex:1;">Salvar</button>
-        <button type="button" id="btn-cancelar-novo"
-          style="background:#777;color:#fff;border:none;padding:8px 0;border-radius:5px;cursor:pointer;flex:1;">Cancelar</button>
+      <div class="botoes-cadastro">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" id="btn-cancelar-novo" class="btn-cancelar-novo">Cancelar</button>
       </div>
     </form>
   </div>
 
   <nav>
-    <h2><img src="./logo-isoletri.jpg" alt=""></h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Estoque</a>
-    <a href="#">Embalagem</a>
-    <a href="#">Faturamento</a>
-    <a href="#">Romaneio</a>
-    <a href="#">Vendas</a>
-    <a href="#">Compras</a>
-    <a href="#">Financeiro</a>
-    <a href="#" class="sair">Sair</a>
+    <div class="menu-item">
+      <a href="#" class="menu-link">Dashboard</a>
+    </div>
+    <div class="menu-item has-dropdown">
+      <a href="#" class="menu-link">Estoque</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Cadastrar Armazém</button>
+        <button class="dropdown-btn">Cadastrar Endereços</button>
+        <button class="dropdown-btn">Inventário</button>
+        <button class="dropdown-btn">Relatórios</button>
+      </div>
+    </div>
+    <div class="menu-item has-dropdown">
+      <a href="#" class="menu-link">Expedição</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Lista de separação</button>
+        <button class="dropdown-btn">Confirmar separação</button>
+        <button class="dropdown-btn">Confirmar embalagem</button>
+        <button class="dropdown-btn">Imprimir etiquetas</button>
+        <button class="dropdown-btn">Romaneio</button>
+      </div>
+    </div>
+    <div class="menu-item has-dropdown">
+      <a href="#" class="menu-link">Faturamento</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Novo Faturamento</button>
+        <button class="dropdown-btn">Relatórios</button>
+      </div>
+    </div>
+    <div class="menu-item has-dropdown">
+      <a href="#" class="menu-link">Planejamento</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Gerar OP</button>
+        <button class="dropdown-btn">Importar pedidos</button>
+        <button class="dropdown-btn">Encerrar OP</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <a href="#" class="menu-link sair">Sair</a>
+    </div>
   </nav>
 
   <header>
-    <h1>Bem-vindo ao Sistema ERP</h1>
+    <h1>
+      Bem-vindo ao Sistema ERP Isoletri
+      <img src="./logo-isoletri.jpg" alt="Logo Isoletri" class="logo-header">
+    </h1>
     <p>Seu painel de controle para gerenciar todas as operações</p>
   </header>
 
   <main>
-    <section class="cards">
-      <div class="card">
-        <h3>Vendas</h3>
-        <p>Gerencie suas vendas</p>
-        <button class="ver-detalhes">Ver Detalhes</button>
-      </div>
-      <div class="card">
-        <h3>Compras</h3>
-        <p>Controle suas compras</p>
-        <button class="ver-detalhes">Ver Detalhes</button>
-      </div>
-      <div class="card" id="card-estoque">
-        <h3>Estoque</h3>
-        <p>Acompanhe seu estoque</p>
-        <button class="ver-detalhes" id="btn-estoque-detalhes">Ver Detalhes</button>
-      </div>
-      <div class="card">
-        <h3>Financeiro</h3>
-        <p>Gerencie suas finanças</p>
-        <button class="ver-detalhes">Ver Detalhes</button>
-      </div>
-    </section>
 
     <!-- Painel de detalhes do estoque -->
     <div id="estoque-detalhes" style="display:none; border:1px solid #ccc; padding:16px; margin-top:16px;">
@@ -118,14 +121,34 @@
         <strong>Relatórios:</strong> Visualize os relatórios do estoque.
       </div>
     </div>
+
+    <section id="dashboard-graficos" style="display:none; margin-bottom: 30px;">
+      <h2>Dashboard</h2>
+      <div id="dashboard-botoes" style="display: flex; gap: 12px; margin-bottom: 18px;">
+        <button class="btn-grafico" data-grafico="estoque">Capacidade do Estoque</button>
+        <button class="btn-grafico" data-grafico="faturamento">Faturamento</button>
+      </div>
+      <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+        <div id="grafico-estoque-container" style="display:none;">
+          <h3>Capacidade do Estoque</h3>
+          <canvas id="grafico-estoque" width="300" height="200"></canvas>
+        </div>
+        <div id="grafico-faturamento-container" style="display:none;">
+          <h3>Faturamento</h3>
+          <canvas id="grafico-faturamento" width="300" height="200"></canvas>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2023 Sistema ERP. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Sistema ERP Isoletri. Todos os direitos reservados.</p>
   </footer>
 
   <!-- Corrija o nome do arquivo do script para garantir o funcionamento -->
   <script src="./Script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
+
